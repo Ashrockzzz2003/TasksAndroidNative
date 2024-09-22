@@ -43,15 +43,16 @@ import com.mad.assignme.data.Task
 import java.util.Calendar
 
 /*
-*
-* data class Task (
-    val id: Int,
-    val name: String,
-    val description: String,
-    val start: String, // milliseconds since epoch.
-    val end: String, // milliseconds since epoch.
-    val courseId: Int,
-    val isCompleted: Boolean
+data class Task (
+    val id: Int = -1,
+    var name: String,
+    var description: String,
+    val startDate: Long,
+    val startTime: String,
+    val endDate: Long,
+    val endTime: String,
+    val courseId: Int = -1,
+    val isCompleted: Boolean = false,
 )
 * */
 

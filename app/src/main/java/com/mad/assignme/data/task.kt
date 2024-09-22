@@ -1,7 +1,5 @@
 package com.mad.assignme.data
 
-import java.util.Date
-
 data class Task (
     val id: Int = -1,
     var name: String,
