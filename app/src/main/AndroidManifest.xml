@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <permission
+        android:name="com.mad.assignme.READ_PREFERENCES"
+        android:protectionLevel="normal" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".PreferencesProvider"
+            android:authorities="com.mad.assignme.provider"
+            android:exported="true"
+            android:readPermission="com.mad.assignme.READ_PREFERENCES" />
     </application>
 
 </manifest>

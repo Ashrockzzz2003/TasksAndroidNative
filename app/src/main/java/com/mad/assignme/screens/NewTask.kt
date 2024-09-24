@@ -1,5 +1,6 @@
 package com.mad.assignme.screens
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -34,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mad.assignme.components.PickDate
@@ -83,6 +85,7 @@ fun NewTask(
     )
     val endDate = rememberDatePickerState()
     val endTime = rememberTimePickerState()
+    val context = LocalContext.current
 
 
 
@@ -149,7 +152,8 @@ fun NewTask(
                             startDate.selectedDateMillis,
                             "${startTime.hour}:${startTime.minute}",
                             endDate.selectedDateMillis,
-                            "${startTime.hour}:${startTime.minute}"
+                            "${startTime.hour}:${startTime.minute}",
+                            context
                         )
                     }
                 ) {
@@ -214,7 +218,8 @@ fun createNewTask(
     startDate: Long?,
     startTime: String,
     endDate: Long?,
-    endTime: String
+    endTime: String,
+    context: Context
 ) : Boolean {
 
     if (taskName.isEmpty() || taskDescription.isEmpty() || startTime.isEmpty() || endTime.isEmpty() || startDate == null || endDate == null) {
@@ -233,9 +238,15 @@ fun createNewTask(
         endTime = endTime
     )
 
-    println(task)
+    // Save task to Shared Preferences.
 
-    // Save task to database.
+    val sp = context.applicationContext.getSharedPreferences("tasks", Context.MODE_PRIVATE)
+    with(sp.edit()) {
+        putString("task", task.name)
+        putString("description", task.description)
+        apply()
+    }
+
 
     return true
 }
