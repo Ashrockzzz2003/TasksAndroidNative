@@ -1,6 +1,6 @@
 # Tasks
 
-My first Android Native app developed leveraging Kotlin and Jetpack Compose.
+My first Android Native app developed leveraging `Kotlin`, `Jetpack Compose` and `Google's M3`.
 
 # Track Development
 
