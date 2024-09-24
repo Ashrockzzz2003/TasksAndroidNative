@@ -140,7 +140,7 @@ fun NewTask(
                 FilledTonalIconButton(
                     colors = IconButtonDefaults.iconButtonColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
